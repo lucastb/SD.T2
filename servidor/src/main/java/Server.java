@@ -9,12 +9,11 @@ public class Server {
 		ChatServerImpl serverImplementation = new ChatServerImpl();
 
 		try {
-			ChatServer stub = (ChatServer) UnicastRemoteObject.exportObject(serverImplementation, 0);
+			ChatServerInterface stub = (ChatServerInterface) UnicastRemoteObject.exportObject(serverImplementation, 0);
 			Registry registry = LocateRegistry.getRegistry();
 			registry.rebind("ChatServer", stub);
 		} catch (RemoteException ex) {
 			ex.printStackTrace();
-			return;
 		}
 	}
 

@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.pucrs</groupId>
-    <artifactId>t2-sistemas-distribuidos-servidor</artifactId>
+    <artifactId>t2-sistemas-distribuidos-cliente</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <dependencies>

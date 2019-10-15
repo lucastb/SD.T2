@@ -1,6 +1,6 @@
 import java.rmi.RemoteException;
 
-public class ChatServerImpl implements ChatServer {
+public class ChatServerImpl implements ChatServerInterface {
 
 	public int register(String ipaddress, String nickname) throws RemoteException {
 		return 0;
