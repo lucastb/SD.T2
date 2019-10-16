@@ -8,4 +8,9 @@
     <artifactId>t2-sistemas-distribuidos-interface</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+    </properties>
+
 </project>
