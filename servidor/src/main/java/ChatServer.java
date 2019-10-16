@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ChatServerImpl implements ChatServerInterface {
+public class ChatServer implements ChatServerInterface {
 
 	private final Map<Integer, String> usuarios = new HashMap<>(); // userId, ip
 	private final Map<String, String> nicknames = new HashMap<>(); // ip, nickname

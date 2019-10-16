@@ -6,7 +6,7 @@ import java.rmi.server.UnicastRemoteObject;
 public class Server {
 
 	public static void main(String[] args) {
-		ChatServerImpl serverImplementation = new ChatServerImpl();
+		ChatServer serverImplementation = new ChatServer();
 
 		try {
 			ChatServerInterface stub = (ChatServerInterface) UnicastRemoteObject.exportObject(serverImplementation, 0);
