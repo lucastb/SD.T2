@@ -1,20 +1,7 @@
-import java.rmi.RemoteException;
-import java.rmi.registry.LocateRegistry;
-import java.rmi.registry.Registry;
-import java.rmi.server.UnicastRemoteObject;
-
 public class Server {
 
 	public static void main(String[] args) {
-		ChatServer serverImplementation = new ChatServer();
-
-		try {
-			ChatServerInterface stub = (ChatServerInterface) UnicastRemoteObject.exportObject(serverImplementation, 0);
-			Registry registry = LocateRegistry.getRegistry();
-			registry.rebind("ChatServer", stub);
-		} catch (RemoteException ex) {
-			ex.printStackTrace();
-		}
+		/* Essa classe irá exportar a implementação do método ChatServer para o cliente */
 	}
 
 }
