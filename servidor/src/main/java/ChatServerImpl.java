@@ -91,7 +91,7 @@ public class ChatServerImpl implements ChatServerInterface {
 	/* Solicita a lista de usuários que fazem parte do canal atual. Necessário ter executado um comando join anteriormente */
 	public String[] names(int id, String channel) throws RemoteException {
 		if (usuariosEmCanal.get(channel).contains(id)) {
-			System.out.println(String.format("Usuário %s está no canal %s, listando os nomes dos usuários."));
+			System.out.println(String.format("Usuário %s está no canal %s, listando os nomes dos usuários.", id, channel));
 			return (String[])usuariosEmCanal.get(channel).toArray();
 		} else {
 			return new String[]{};
@@ -101,13 +101,13 @@ public class ChatServerImpl implements ChatServerInterface {
 	/* Solicita a remoção de um usuário de um canal. Somente o administrador do canal pode realizar essa operação. */
 	public int kick(int id, String channel, String nickname) throws RemoteException {
 		if (canaisDisponiveis.get(channel) == id) {
-			System.out.println(String.format("Usuário %s é administrador do canal %s. Executando kick."));
+			System.out.println(String.format("Usuário %s é administrador do canal %s. Executando kick.", id, channel));
 			int userId = encontraUserId(nickname);
 			List<Integer> usuariosAtuais = usuariosEmCanal.get(channel);
 			usuariosAtuais.remove(userId);
 			return 1;
 		} else {
-			System.out.println(String.format("Usuário %s não é administrador do canal!"));
+			System.out.println(String.format("Usuário %s não é administrador do canal!", id));
 			return 0;
 		}
 	}
