@@ -54,7 +54,7 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerInterfa
 	Apenas o administrador pode realizar operações do tipo remove e kick. O apelido do administrador do canal deve
 	sempre ser impresso com um * na frente. */
 	public int create(int porta, String canal) throws RemoteException, NotBoundException {
-		if (!canaisDisponiveis.containsKey(canal)) {
+		if (!canaisDisponiveis.containsKey(canal) && canal.charAt(0) == '#') {
 			logger.info(String.format("Criando canal %s com o usuário %s de administrador", canal, usuariosAtivos.get(porta)));
 			canaisDisponiveis.put(canal, porta);
 			this.enviaMensagemParaCliente(String.format("Você criou o canal %s", canal), porta);
@@ -181,9 +181,9 @@ public class ChatServer extends UnicastRemoteObject implements ChatServerInterfa
 				if (canal.equalsIgnoreCase(channel) && !porta.equals(id)) {
 					try {
 						if (canaisDisponiveis.get(channel).equals(id)) {
-							this.enviaMensagemParaCliente("*" + message, porta);
+							this.enviaMensagemParaCliente("*" + "<" + usuariosAtivos.get(id) + "> " + message, porta);
 						} else {
-							this.enviaMensagemParaCliente(message, porta);
+							this.enviaMensagemParaCliente("<" + usuariosAtivos.get(id) + "> " + message, porta);
 						}
 					} catch (Exception e) {
 						e.printStackTrace();
